@@ -1,13 +1,8 @@
-extends RigidBody2D
+extends KinematicBody2D
 const SPEED = 200
 var movedir = Vector2(0, 0)
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
 	pass
 	
 
@@ -22,9 +17,7 @@ func controls_loop():
 
 func movement_loop(delta):
 	var motion = movedir.normalized() * SPEED
-	#move_and_slide(motion, Vector2(0,0))
-	apply_impulse(Vector2(0,0),motion)
-	#move_and_collide(motion)
+	move_and_slide(motion, Vector2(0,0))
 	
 func _physics_process(delta):
 	controls_loop()
@@ -34,3 +27,15 @@ func _physics_process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
+
+func _on_Area2D_body_entered(body):  # odpala sie raz na poczatku z Playerem i TileMap
+    print(str('Body entered: ', body.get_name()))
+
+func _on_Area2D_area_entered(area):  # odpala sie przy wejsciu do biedry
+    print(str('Area entered: ', area.get_name()))
+
+func _on_Area2D_area_exited(area):
+	 print(str('Area exited: ', area.get_name()))
+
+func _on_Area2D_body_exited(body):
+	pass # replace with function body

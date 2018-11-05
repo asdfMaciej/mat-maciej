@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/moving/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://maps/outside.tscn" type="PackedScene" id=2]
+
+[node name="World" type="Node2D" index="0"]
+
+position = Vector2( 157.31, 133.787 )
+
+[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( -5.92963, -32.1688 )
+z_index = 1
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Map" parent="." index="1" instance=ExtResource( 2 )]
+
+
