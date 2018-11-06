@@ -74,21 +74,13 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor" ]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
+[node name="Player" parent="." index="1" instance=ExtResource( 1 )]
 
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-
-[node name="Player" parent="CanvasLayer" index="0" instance=ExtResource( 1 )]
-
-position = Vector2( 151.38, 101.618 )
+position = Vector2( -5.92999, -32.169 )
 z_index = 1
 _sections_unfolded = [ "Z Index" ]
 
-[node name="Camera2D" type="Camera2D" parent="CanvasLayer/Player" index="3"]
+[node name="Camera2D" type="Camera2D" parent="Player" index="3"]
 
 anchor_mode = 1
 rotating = true
