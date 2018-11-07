@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://entities/moving/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://maps/outside.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/still/HUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/HUD.gd" type="Script" id=2]
+[ext_resource path="res://entities/moving/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://maps/outside.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node2D" index="0"]
 
 position = Vector2( 157.31, 133.787 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="." index="0"]
+[node name="HUDLayer" type="CanvasLayer" parent="." index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -16,65 +18,11 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer2" index="0"]
+[node name="HUD" parent="HUDLayer" index="0" instance=ExtResource( 1 )]
 
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -1151.69
-margin_top = -562.213
-margin_right = -1068.69
-margin_bottom = -548.213
-grow_horizontal = 0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-stretch = false
-stretch_shrink = 1
-_sections_unfolded = [ "Anchor", "Hint", "Margin", "Mouse", "Size Flags", "Theme", "custom_constants" ]
+script = ExtResource( 2 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/ViewportContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 8.0
-margin_right = 83.0
-margin_bottom = 14.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
-
-[node name="Label" type="Label" parent="CanvasLayer2/ViewportContainer/HBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 75.0
-margin_bottom = 14.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "taerwttaewt"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor" ]
-
-[node name="Player" parent="." index="1" instance=ExtResource( 1 )]
+[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( -5.92999, -32.169 )
 z_index = 1
@@ -106,6 +54,6 @@ editor_draw_limits = false
 editor_draw_drag_margin = true
 _sections_unfolded = [ "Editor", "Limit" ]
 
-[node name="Map" parent="." index="2" instance=ExtResource( 2 )]
+[node name="Map" parent="." index="2" instance=ExtResource( 4 )]
 
 

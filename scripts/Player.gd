@@ -1,6 +1,9 @@
 extends KinematicBody2D
 const SPEED = 200
+const DEBUG = true
 var movedir = Vector2(0, 0)
+var current_areas = []; # stos
+var last_area = null;
 
 func _ready():
 	pass
@@ -29,13 +32,20 @@ func _physics_process(delta):
 #	pass
 
 func _on_Area2D_body_entered(body):  # odpala sie raz na poczatku z Playerem i TileMap
-    print(str('Body entered: ', body.get_name()))
+    if DEBUG: print(str('Body entered: ', body.get_name()))
 
 func _on_Area2D_area_entered(area):  # odpala sie przy wejsciu do biedry
-    print(str('Area entered: ', area.get_name()))
+	current_areas.append(area)
+	last_area = area
+	if DEBUG: print(str('Area entered: ', area.get_name()))
+	if DEBUG: print(current_areas)
 
 func _on_Area2D_area_exited(area):
-	 print(str('Area exited: ', area.get_name()))
+	current_areas.erase(area)
+	last_area = current_areas.pop_back()
+	if DEBUG: print(str('Area exited: ', area.get_name()))
+	if DEBUG: print(current_areas)
+	if DEBUG: print(last_area)
 
 func _on_Area2D_body_exited(body):
-	pass # replace with function body
+	pass

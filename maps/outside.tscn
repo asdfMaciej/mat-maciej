@@ -9,7 +9,11 @@
 
 position = Vector2( 356.979, 246.764 )
 
-[node name="TileMap" type="TileMap" parent="." index="1"]
+[node name="Biedronka2" parent="." index="1" instance=ExtResource( 1 )]
+
+position = Vector2( 415.705, 327.65 )
+
+[node name="TileMap" type="TileMap" parent="." index="2"]
 
 mode = 0
 tile_set = ExtResource( 2 )
