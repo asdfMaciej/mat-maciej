@@ -5,7 +5,7 @@
 [ext_resource path="res://entities/moving/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://maps/outside.tscn" type="PackedScene" id=4]
 
-[node name="World" type="Node2D" index="0"]
+[node name="World" type="Node2D"]
 
 position = Vector2( 157.31, 133.787 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
@@ -30,6 +30,7 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="Camera2D" type="Camera2D" parent="Player" index="3"]
 
+offset = Vector2( -175, 0 )
 anchor_mode = 1
 rotating = true
 current = true
