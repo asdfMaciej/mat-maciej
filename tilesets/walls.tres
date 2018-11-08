@@ -1,9 +1,11 @@
-[gd_resource type="TileSet" load_steps=6 format=2]
+[gd_resource type="TileSet" load_steps=8 format=2]
 
 [ext_resource path="res://sprites/walls/wall.png" type="Texture" id=1]
 [ext_resource path="res://sprites/bg/grass.png" type="Texture" id=2]
 [ext_resource path="res://sprites/bg/path2.png" type="Texture" id=3]
 [ext_resource path="res://sprites/bg/path.png" type="Texture" id=4]
+[ext_resource path="res://sprites/bg/curb.png" type="Texture" id=5]
+[ext_resource path="res://sprites/bg/curb2.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -53,4 +55,22 @@ extents = Vector2( 16, 16 )
 3/occluder_offset = Vector2( 32, 32 )
 3/navigation_offset = Vector2( 32, 32 )
 3/shapes = [  ]
+4/name = "Curb1"
+4/texture = ExtResource( 5 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 64, 64 )
+4/is_autotile = false
+4/occluder_offset = Vector2( 32, 32 )
+4/navigation_offset = Vector2( 32, 32 )
+4/shapes = [  ]
+5/name = "Curb2"
+5/texture = ExtResource( 6 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 64, 64 )
+5/is_autotile = false
+5/occluder_offset = Vector2( 32, 32 )
+5/navigation_offset = Vector2( 32, 32 )
+5/shapes = [  ]
 

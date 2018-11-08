@@ -1,6 +1,8 @@
 extends ViewportContainer
 
 var player
+var camera
+var tween  # sluzy do zmieniania w czasie wartosci plynnie
 var p_emotion = "happy"
 var area_name = null
 var labels = {}
@@ -9,8 +11,12 @@ var textures = {"place": {}, "player": {"happy": [], "angry": [], "sad": []}}
 
 func _ready():
 	player = get_node("../../../World/Player")
+	camera = get_node("../../../World/Player/Camera2D")
+	tween = get_node("../../../World/Player/Camera2D/Tween")
+	sidebar["node"] = get_node("Sidebar")
 	sidebar["place"] = get_node("Sidebar/Place")
 	sidebar["player"] = get_node("Sidebar/Player")
+	sidebar["visible"] = true
 	labels["place"] = get_node("Sidebar/Messages/Place")
 	textures["place"]["biedronka"] = preload("res://sprites/hud/place_biedronka.png")
 	textures["place"]["kiosk"] = preload("res://sprites/hud/place_kiosk.png")
@@ -21,6 +27,8 @@ func _ready():
 	textures["player"]["happy"].append(preload("res://sprites/hud/player_licking.png"))
 	textures["player"]["angry"].append(preload("res://sprites/hud/player_angry.png"))
 	textures["player"]["sad"].append(preload("res://sprites/hud/player_sad.png"))
+	
+	hide_sidebar()
 
 func _process(delta):
 	"""
@@ -49,9 +57,64 @@ func set_place(name):
 	
 	if randi() % 10 == 0: # 1/10 chance
 		sidebar["player"].set_texture(random_player())
+		show_sidebar()
+	if randi() % 10 == 1:
+		hide_sidebar()
 	
 	labels["place"].text = name.capitalize()
 
 func random_player():
 	var arr = textures["player"][p_emotion]
 	return arr[randi() % arr.size()]
+
+func hide_sidebar(instantly=false):
+	if not sidebar["visible"]:
+		return
+
+	if instantly:
+		sidebar["node"].margin_left = -350
+		camera.offset = Vector2(0, 0)
+	else:
+		tween.interpolate_property(
+			sidebar["node"], "margin_left",
+			0, -350, 1,
+			Tween.TRANS_LINEAR, Tween.EASE_OUT
+		)
+		tween.interpolate_property(
+			camera, "offset", 
+			Vector2(-175, 0), Vector2(0, 0), 1, 
+			Tween.TRANS_LINEAR, Tween.EASE_OUT
+		)
+		tween.start()
+
+	camera.drag_margin_left = 0.15
+	camera.drag_margin_top = 0.15
+	camera.drag_margin_right = 0.15
+	camera.drag_margin_bottom = 0.15
+	sidebar["visible"] = false
+
+func show_sidebar(instantly=false):
+	if sidebar["visible"]:
+		return
+	
+	if instantly:
+		sidebar["node"].margin_left = 0
+		camera.offset = Vector2(-175, 0)
+	else:
+		tween.interpolate_property(
+			sidebar["node"], "margin_left",
+			-350, 0, 1,
+			Tween.TRANS_LINEAR, Tween.EASE_OUT
+		)
+		tween.interpolate_property(
+			camera, "offset", 
+			Vector2(0, 0), Vector2(-175, 0), 1, 
+			Tween.TRANS_LINEAR, Tween.EASE_OUT
+		)
+		tween.start()
+
+	camera.drag_margin_left = 0.1
+	camera.drag_margin_top = 0.1
+	camera.drag_margin_right = 0.1
+	camera.drag_margin_bottom = 0.1
+	sidebar["visible"] = true

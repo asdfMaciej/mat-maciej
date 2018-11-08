@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sprites/walls/wall.png" type="Texture" id=1]
 [ext_resource path="res://sprites/bg/grass.png" type="Texture" id=2]
 [ext_resource path="res://sprites/bg/path2.png" type="Texture" id=3]
 [ext_resource path="res://sprites/bg/path.png" type="Texture" id=4]
+[ext_resource path="res://sprites/bg/curb.png" type="Texture" id=5]
+[ext_resource path="res://sprites/bg/curb2.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -38,15 +40,29 @@ shape = SubResource( 1 )
 
 position = Vector2( 90, 40 )
 texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 96, 96 )
+_sections_unfolded = [ "Region", "Transform" ]
 
 [node name="Path" type="Sprite" parent="." index="2"]
 
 position = Vector2( 180, 40 )
 texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="PathXD" type="Sprite" parent="." index="3"]
 
-position = Vector2( 260, 40 )
+position = Vector2( 270, 40 )
 texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Curb1" type="Sprite" parent="." index="4"]
+
+position = Vector2( 360, 40 )
+texture = ExtResource( 5 )
+
+[node name="Curb2" type="Sprite" parent="." index="5"]
+
+position = Vector2( 400, 40 )
+texture = ExtResource( 6 )
 
 
