@@ -1,6 +1,6 @@
 extends KinematicBody2D
 const SPEED = 200
-const DEBUG = true
+const DEBUG = false
 var movedir = Vector2(0, 0)
 var current_areas = []; # stos
 var last_area = null;
@@ -30,6 +30,10 @@ func _physics_process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
+
+func on_map_change():
+	last_area = null
+	current_areas = []
 
 func _on_Area2D_body_entered(body):  # odpala sie raz na poczatku z Playerem i TileMap
     if DEBUG: print(str('Body entered: ', body.get_name()))
